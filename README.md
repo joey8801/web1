@@ -25,15 +25,13 @@
 블록체인 네트워크 구동
 fabric.sh all -> network.sh all
  * 3 orderer
- * 1 peer
- * 1 couchdb
- * 1 cli
+ * 1 cli (실해후 삭제)
  * 1 CA
 
 ---
 
 ### 2.1 function network_all
-기존 도커, 파일, 폴더 삭제) 및 블록체인 네트워크 구동
+기존 도커, 파일, 폴더 삭제 및 블록체인 네트워크 구동
  * network_clean
  * network_up
  
@@ -129,4 +127,100 @@ fabric-tools 이미지를 통해 cli docker를 띄우고 기존에 만들었던 
  * network_run
 
 ---
-## peer
+
+## 3. peer.sh
+블록체인 네트워크에 피어를 생성/채널 조인/체인코드 설치/채널에 체인코드 initiate/
+fabric.sh all -> network.sh all
+ * 1 peer
+ * 1 peer.cli
+ * 1 couchdb
+ 
+### 3.1 function peer_all
+기존 도커, 폴더, 파일 삭제 및 피어 생성/채널 조인/체인코드 설치/체인코드 initiate
+(peer / peer_channel / peer_chaincode)
+ * peer_clean
+ * peer_up
+ * peer_channel_create
+ * peer_channel_join
+ * peer_chaincode_install
+ * peer_chaincode_instantiate
+
+---
+### peer
+ * all
+ * build
+ * rebuild
+ * run
+ * up
+ * down 
+ * restart
+ * channel
+  - create
+  - join
+ * chaincode
+  - install
+  - initiate
+  - upgrade
+  - invoke
+  - query
+ * clean
+---
+
+#### 3.1.1 function peer_clean
+기존 도커 정지/관련 파일 삭제 및 기존 폴더, 파일 삭제
+ * peer_down
+ 
+#### 3.1.1.1 function peer_down
+기존 도커 삭제 및 관련 파일 삭제
+
+---
+
+#### 3.1.2 function peer_up
+피어를 생성하기 위한 config 파일을 생성하고 피어 도커를 구동
+ * config_set
+ * peer_build
+ * peer_run
+ 
+#### 3.1.2.1 function config_set
+피어 도커 config파일에 필요한 변수들의 set
+
+#### 3.1.2.2 function peer_build
+피어 도커 config 
+ * peer_build_config
+ * peer_build_docker
+
+---
+
+#### 3.1.2.2.1 function peer_build_config
+생성되었던 피어 MSP 복사, 참여하고자 하는 채널 파일 복사, 코어 config 파일 복사 및 수정
+ * peer_copy_crypto_config
+ * peer_copy_channel_config
+ * peer_copy_core_config
+
+#### 3.1.2.2.1.1 function peer_copy_crypto_config
+기존 network.sh로 만들어진 피어 MSP 복사
+
+#### 3.1.2.2.1.2 function peer_copy_channel_config
+기존 network.sh로 만들어진 채널 .tx 파일 복사
+
+#### 3.1.2.2.1.3 function peer_copy_core_config
+피어 core config template 복사 및 수정
+
+---
+
+#### 3.1.2.2.2 function peer_build_docker
+피어 도커 생성을 위한 docker-compose.yaml 파일 작성
+
+---
+
+#### 3.1.2.3 function peer_run
+작성된 docker-compose.yaml 파일을 기반으로 피어 도커 실행
+
+---
+
+#### 3.1.3 function peer_channel_create
+채널생성
+c.block 복사
+
+#### 3.1.4 function peer_channel_join
+채널조인
