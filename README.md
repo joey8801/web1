@@ -224,3 +224,15 @@ c.block 복사
 
 #### 3.1.4 function peer_channel_join
 채널조인
+
+---
+
+#### 3.1.5 function peer_chaincode_install
+피어에 example02.go 체인 코드 설치
+
+#### 3.1.6 function peer_chanincode_instantiate
+채널에 체인코드 initantiate (a:100, b:200)
+
+#### 3.1.7 function peer_chaincode_upgrade
+#### 3.1.8 function peer_chaincode_invoke
+#### 3.1.9 function peer_chaincode_query
