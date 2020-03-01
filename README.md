@@ -25,8 +25,52 @@
 블록체인 네트워크 구동
 fabric.sh all -> network.sh all
  * 3 orderer
- * 1 cli (실해후 삭제)
  * 1 CA
+ * 1 cli (실해후 삭제)
+
+## network.sh all -> flow
+1. network clean (& down)
+2. 블록체인 네트워크를 만들기 위해 필요한 configure 파일들 작성
+   => confitx.yaml, cryptogen.yaml, orderer.yaml
+3. 네트워크에 필요한 key material 생성 (cryptogen.yaml로 정의된 대로 만들어짐)
+   => key material (relate MSP)
+4. 도커를 빌드하기 위해 필요한 파일 작성
+   => docker-compose.yaml
+5. genesis.block 및 .tx 채널 생성
+6. genesis.block / .tx / key 등을 경로에 맞춰서 복사
+7. 도커 빌드
+
+## network.sh 변수 확인
+ * net=itt : docker network											
+ * vera=1.4.4 : fabric image version										
+ * verb=0.4.15 : third party version
+ * ccs=etcdraft : consensus type raft
+ * rootdir="$( cd "$(dirname "$0")" ; pwd -P )" : root folder
+ * ddir=$rootdir/deploy
+
+docker 빌드시 host에서 연결되어있는 폴더 (공유폴더)
+ * tdir=$rootdir/template
+ * ttdir=$tdir/configtx
+ * tgdir=$tdir/cryptogen
+ * todir=$tdir/orderer
+ * tddir=$tdir/docker
+
+docker 빌드시 docker에 적용되는 폴더 (노 변경)
+ * bdir=$rootdir/build
+ * btdir=$bdir/configtx
+ * bgdir=$bdir/cryptogen
+ * bodir=$bdir/orderer
+ * bddir=$bdir/docker
+
+ * mc=mc # main channel (For Admin, Do not use this channel)
+ * mcp=Mainchain # main channel profile
+ * c=dc # sub channel
+ * cp=DevChannel # sub channel profile
+ * d=itt.co.kr # domain name
+ * ip=orderer0.itt.co.kr
+ * orgs=( bpa ) # organization names
+ * pcs=( 1 ) # number of peers, each at org
+ * oc=3   # number of orderer
 
 ---
 
