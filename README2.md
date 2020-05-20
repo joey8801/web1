@@ -19,8 +19,9 @@ sudo apt-get install curl
 sudo apt-get install git
 sudo apt-get install vim
 ```
-
+---
     + golang
+    
 ``` shell
 wget http://storage.googleapis.com/golang/go1.13.6.linux-amd64.tar.gz
 sudo tar -C /usr/local -xzf go1.13.6.linux-amd64.tar.gz
@@ -31,3 +32,4 @@ echo export GOPATH=$HOME/go >> .profile
 source .profile
 go version && echo $GOPATH
 ```
+---
