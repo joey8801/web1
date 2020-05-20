@@ -10,7 +10,7 @@ NAT network
  * 개별설정 -> 네트워크 -> 어댑터1탭 -> 다음에연결됨 : NAT 네트워크로 변경 -> enitt 선택 -> 확인
 3. 초기설정
  * enitt 사전설치
-  ** build-essential, curl, git, vim
+  - build-essential, curl, git, vim
 ``` shell
 sudo apt-get update
 sudo apt-get upgrade
