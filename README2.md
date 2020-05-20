@@ -18,7 +18,7 @@ sudo apt-get install build-essential
 sudo apt-get install curl
 sudo apt-get install git
 sudo apt-get install vim
-``` shell
+  ```
 
     + golang
     
