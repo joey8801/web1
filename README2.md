@@ -6,11 +6,11 @@ NAT network
 ### 초기설정
 1. virtual 3 ubuntu 빌드 (램 4GB, 용량 80G)
 2. NAT network 설정 변경
- * 파일 -> 환경설정 -> 네트워크 -> 추가 -> 편집 -> 네트워크이름 enitt / 네트워크 CIDR (192.168.100.0/24) / DHCP 지원 체크
- * 개별설정 -> 네트워크 -> 어댑터1탭 -> 다음에연결됨 : NAT 네트워크로 변경 -> enitt 선택 -> 확인
+  * 파일 -> 환경설정 -> 네트워크 -> 추가 -> 편집 -> 네트워크이름 enitt / 네트워크 CIDR (192.168.100.0/24) / DHCP 지원 체크
+  * 개별설정 -> 네트워크 -> 어댑터1탭 -> 다음에연결됨 : NAT 네트워크로 변경 -> enitt 선택 -> 확인
 3. 초기설정
- * enitt 사전설치
-  - build-essential, curl, git, vim
+  * enitt 사전설치
+    + build-essential, curl, git, vim
 ``` shell
 sudo apt-get update
 sudo apt-get upgrade
